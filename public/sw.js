@@ -10,15 +10,16 @@ this.addEventListener('install', (event) => {
                 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js',
                 '/static/js/bundle.js',
                 '/static/js/vendors~main.chunk.js',
+                'static/js/vendors~main.chunk.js.map',
                 '/static/js/main.chunk.js',
                 '/manifest.json',
                 '/logo192.png',
                 'sw.js',
+                'https://jsonplaceholder.typicode.com/users',
                 '/',
                 '/about',
-                '/contact'
-
-
+                '/contact',
+                '/users'
             ])
         }).catch((err) => {
             console.log('err: ', err)
