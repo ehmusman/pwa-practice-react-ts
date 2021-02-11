@@ -1,12 +1,20 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header';
+import Header from './components/layout/Header';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Contact from './components/layout/Contact';
+import About from './components/layout/About';
 
-function App() {
+const App:React.FC = () => {
   return (
-    <div className="App">
+    <Router>
       <Header />
-    </div>
+      <Switch>
+        <Route exact path='/'></Route>
+        <Route exact path='/contact' component={Contact}></Route>
+        <Route exact path='/about' component={About}></Route>
+      </Switch>
+    </Router>
   );
 }
 
