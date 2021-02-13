@@ -30,15 +30,27 @@ const  Users: React.FC = () => {
     }
     
     const[users, setUsers] = useState<UserI[]>([])
+    const [mode, setMode] = useState<string>('online')
     useEffect(()=>{
         const users = async () => {
-            const res = await axios.get('https://jsonplaceholder.typicode.com/users')
-        setUsers(res.data)
+            try{
+                const res = await axios.get('https://jsonplaceholder.typicode.com/users')
+                setUsers(res.data)
+                localStorage.setItem("users", JSON.stringify(res.data))
+                setMode("online")
+            }catch{
+                const data:any = localStorage.getItem("users")
+                setUsers(JSON.parse(data))
+                setMode("offline")
+            }
         }
         users()
     },[])
     return (
         <div className="container">
+            {mode === "offline" ? (
+<div className="alert alert-warning">You are offline, there is some problem with your connection</div>
+            ) : null}
         <table className="table table-striped">
         <thead>
             <tr>
