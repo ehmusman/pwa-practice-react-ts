@@ -25,7 +25,7 @@ export const swDev = () => {
         console.warn('response: ', res)
         return res.pushManager.getSubscription()
             .then(function (subscription) {
-                return res.pushManager.subscribe({
+                res.pushManager.subscribe({
                     userVisibleOnly: true,
                     applicationServerKey: determineAppServerKey()
                 })
